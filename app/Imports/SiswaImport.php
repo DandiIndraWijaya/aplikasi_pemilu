@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Siswa;
+use App\Models\Siswa;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class SiswaImport implements ToModel
@@ -17,7 +17,7 @@ class SiswaImport implements ToModel
         return new Siswa([
             'nis' => $row[0],
             'nama' => $row[1],
-            'alamat' => $row[2]
+            'password' => $row[2]
         ]);
     }
 }

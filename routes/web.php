@@ -23,7 +23,7 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 Auth::routes();
 
-Route::get('/dashboard', 'App\Http\Controllers\HomeController@dashboard')->name('dashboard');
+
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
@@ -36,3 +36,5 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
+Route::get('/dashboard', 'App\Http\Controllers\AdminController@index')->name('dashboard');
+Route::post('/import_siswa', 'App\Http\Controllers\AdminController@import_siswa')->name('import_siswa');
