@@ -2,6 +2,8 @@
 /storage/framework/laravel-excel/
 /public/hot
 /public/storage
+/public/foto_calon
+/public/file_siswa
 /presets
 /storage/*.key
 /vendor
