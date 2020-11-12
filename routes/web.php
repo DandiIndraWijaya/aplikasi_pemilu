@@ -36,5 +36,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
+
 Route::get('/dashboard', 'App\Http\Controllers\AdminController@index')->name('dashboard');
 Route::post('/import_siswa', 'App\Http\Controllers\AdminController@import_siswa')->name('import_siswa');
+
+Route::get('/admin/calon', 'App\Http\Controllers\CalonController@index')->name('admin_calon');
+Route::get('/admin/pemilihan', 'App\Http\Controllers\PemilihanController@index')->name('admin_pemilihan');
+Route::post('/admin/input_pemilihan', 'App\Http\Controllers\PemilihanController@input_pemilihan')->name('admin_input_pemilihan');
+
+Route::post('/admin/update_pemilihan', 'App\Http\Controllers\PemilihanController@update_pemilihan')->name('admin_update_pemilihan');
+
+Route::post('/admin/hapus_pemilihan', 'App\Http\Controllers\PemilihanController@hapus_pemilihan')->name('admin_hapus_pemilihan');

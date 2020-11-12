@@ -1,3 +1,5 @@
-<footer class="footer mt-7">
-    @include('layouts.footers.nav')
+<footer class="footer mt-7 fixed-bottom">
+    <center>
+        @include('layouts.footers.nav')
+    </center>
 </footer>
