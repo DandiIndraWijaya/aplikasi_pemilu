@@ -166,10 +166,10 @@
                                             {{ csrf_field() }}
                                             <input type="text" name="nama_pemilihan" value="{{ $p->nama_pemilihan }}" hidden>
                                             <input type="text" name="id" value="{{ $p->id }}" hidden>
-                                            <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#edit{{ $p->id }}">
+                                            <button type="button" class="btn btn-primary btn-sm mr-1" data-toggle="modal" data-target="#edit{{ $p->id }}">
                                                 Edit
                                             </button>
-                                            <input type="submit" value="Hapus" class="btn btn-danger mr-1">
+                                            <input type="submit" value="Hapus" class="btn btn-danger btn-sm mr-1">
                                         </form>
                                     </td>
                                 </tr>
