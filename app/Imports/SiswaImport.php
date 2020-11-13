@@ -2,8 +2,9 @@
 
 namespace App\Imports;
 
-use App\Models\Siswa;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Facades\Hash;
 
 class SiswaImport implements ToModel
 {
@@ -14,10 +15,11 @@ class SiswaImport implements ToModel
     */
     public function model(array $row)
     {
-        return new Siswa([
+        return new User([
             'nis' => $row[0],
-            'nama' => $row[1],
-            'password' => $row[2]
+            'name' => $row[1],
+            'password' => Hash::make($row[2]),
+            'role' => 1
         ]);
     }
 }

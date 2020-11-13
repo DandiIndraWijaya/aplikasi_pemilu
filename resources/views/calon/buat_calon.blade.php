@@ -77,9 +77,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row m-1" style="width: 100%">
 						@foreach ($calon as $c)
-						<div class="col-12 col-sm-12 m-1 col-md-12 col-lg-3 col-xl-3">
+						<div class="col-12 col-sm-12 mb-3 col-md-12 col-lg-3 col-xl-3">
 							<div class="card" >
 							<img class="card-img-top" src="{{ url('/foto_calon/'.$c->foto) }}" height="250" alt="Card image cap">
 								<div class="card-body">
@@ -91,7 +91,7 @@
 									<input type="text" name="id_calon" value="{{ $c->id }}" hidden>
 									<input type="text" name="foto_calon" value="{{ $c->foto }}" hidden>
 									<input type="text" name="nama_calon" value="{{ $c->nama_calon }}" hidden>
-									<input type="submit" class="btn btn-danger" value="Hapus">
+									<input type="submit" class="btn btn-danger btn-sm" value="Hapus">
 								</form>
 								</div>
 							  </div>

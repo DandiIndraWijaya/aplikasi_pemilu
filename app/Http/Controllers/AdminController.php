@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
  
+use App\Models\User;
 use App\Models\Siswa;
  
 use Session;
@@ -32,7 +33,7 @@ class AdminController extends Controller
 		// membuat nama file unik
 		$nama_file = rand().$file->getClientOriginalName();
         
-        Siswa::truncate();
+        User::where('role', 1)->delete();
 
 		// upload ke folder file_siswa di dalam folder public
 		$file->move('file_siswa',$nama_file);
