@@ -15,20 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->name('login_siswa');
+})->name('login_pemilih')->middleware('guest');
+Route::get('/login')->middleware('guest');
 
-Route::post('/my_login', 'App\Http\Controllers\LoginController@login')->name('my_login');
-
+Route::post('/proses_login_pemilih', 'App\Http\Controllers\LoginController@login')->name('proses_login_pemilih');
 
 Auth::routes();
 
-
-
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
+Route::get('/home', 'App\Http\Controllers\PemilihController@index')->middleware('pemilih')->name('home');
+Route::get('/dashboard', 'App\Http\Controllers\AdminController@index')->name('dashboard')->middleware('admin');
+Route::post('/import_siswa', 'App\Http\Controllers\AdminController@import_siswa')->name('import_siswa');
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function () {
+
+Route::group(['middleware' => 'admin'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -39,12 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
-
-Route::get('/dashboard', 'App\Http\Controllers\AdminController@index')->name('dashboard');
-Route::post('/import_siswa', 'App\Http\Controllers\AdminController@import_siswa')->name('import_siswa');
-
-
-
+Route::group(['middleware' => 'admin'], function (){
 // Buat Pemilihan
 Route::get('/admin/pemilihan', 'App\Http\Controllers\PemilihanController@index')->name('admin_pemilihan');
 Route::post('/admin/input_pemilihan', 'App\Http\Controllers\PemilihanController@input_pemilihan')->name('admin_input_pemilihan');
@@ -59,3 +54,4 @@ Route::post('/admin/input_calon', 'App\Http\Controllers\CalonController@input_ca
 Route::post('/admin/update_calon', 'App\Http\Controllers\CalonController@update_calon')->name('admin_update_calon');
 Route::post('/admin/hapus_calon', 'App\Http\Controllers\CalonController@hapus_calon')->name('admin_hapus_calon');
 // Akhir Buat Calon
+});

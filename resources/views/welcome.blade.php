@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'bg-default'])
+@extends('layouts.pemilih', ['class' => 'bg-default'])
 
 @section('content')
     @include('layouts.headers.guest')
@@ -8,7 +8,7 @@
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">
-                        <form autocomplete="off"  role="form" method="POST" action="{{ route('my_login') }}">
+                        <form autocomplete="off"  role="form" method="POST" action="{{ route('proses_login_pemilih') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">

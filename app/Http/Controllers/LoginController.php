@@ -28,10 +28,10 @@ class LoginController extends Controller
         //LAKUKAN LOGIN
         if (auth()->attempt($login)) {
             //JIKA BERHASIL, MAKA REDIRECT KE HALAMAN HOME
-            return redirect()->route('dashboard');
+            return redirect()->route('home');
         }
         //JIKA SALAH, MAKA KEMBALI KE LOGIN DAN TAMPILKAN NOTIFIKASI 
-        return redirect()->route('/')->with(['error' => 'Email/Password salah!']);
+        return redirect()->route('/')->with(['error' => 'NIS dan Password Salah!']);
     }
 
     public function logout()
