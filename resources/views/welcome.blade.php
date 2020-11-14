@@ -7,7 +7,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-5 col-md-7">
                 <div class="card bg-secondary shadow border-0">
-                    <div class="card-body px-lg-5 py-lg-5">
+                    <div class="card-body px-lg-3 py-lg-3">
+                        <center><h3>Login Pemilih</h3></center>
                         <form autocomplete="off"  role="form" method="POST" action="{{ route('proses_login_pemilih') }}">
                             @csrf
 
@@ -38,7 +39,7 @@
                                 @endif
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">{{ __('Sign in') }}</button>
+                                <button type="submit" class="btn btn-primary my-4">{{ __('Masuk') }}</button>
                             </div>
                         </form>
                     </div>

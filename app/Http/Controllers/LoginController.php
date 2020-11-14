@@ -31,7 +31,7 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
         //JIKA SALAH, MAKA KEMBALI KE LOGIN DAN TAMPILKAN NOTIFIKASI 
-        return redirect()->route('/')->with(['error' => 'NIS dan Password Salah!']);
+        return redirect()->route('login_pemilih')->with(['error' => 'NIS dan Password Salah!']);
     }
 
     public function logout()
