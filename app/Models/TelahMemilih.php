@@ -11,5 +11,5 @@ class TelahMemilih extends Model
 
     protected $table = 'telah_memilih';
 
-    protected $fillable = ['id_siswa', 'id_pemilihan'];
+    protected $fillable = ['id_pemilih', 'id_pemilihan'];
 }

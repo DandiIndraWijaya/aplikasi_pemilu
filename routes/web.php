@@ -26,6 +26,7 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'pemilih'], function () {
 	Route::get('/home', 'App\Http\Controllers\PemilihController@index')->name('home');
 	Route::get('/pilih_calon/{id}', 'App\Http\Controllers\PemilihController@pilih_calon')->name('pilih_calon');
+	Route::post('/proses/pilih_calon', 'App\Http\Controllers\PemilihController@proses_pilih_calon')->name('proses_pilih_calon');
 });
 
 Route::group(['middleware' => 'admin'], function (){

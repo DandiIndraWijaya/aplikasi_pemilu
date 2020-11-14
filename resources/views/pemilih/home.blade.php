@@ -29,6 +29,8 @@
                                             <strong>Sudah Dimulai</strong> <br/>
                                             Berakhir : <strong><span data-countdown="{{ $p->pemilihan_berakhir }}"></span></strong>
                                             <br/>
+
+                                            
                                             <a href="{{ url('pilih_calon/' . $p->id) }}" class="btn btn-warning mt-1 p-2">
                                                 Pilih Calon!
                                             </a>

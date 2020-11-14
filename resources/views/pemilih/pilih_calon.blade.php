@@ -29,11 +29,11 @@
                                                 </center>
                                             </div>
                                         </div>
-                                        <form method="post" action="/admin/input_calon" enctype="multipart/form-data">
+                                        <form method="post" action="/proses/pilih_calon">
                                             {{ csrf_field() }}
                                             <div class="modal-footer">
                                                 <input type="text" value="{{ $c->id }}" name="id_calon" hidden>
-
+                                                <input type="text" value="{{ $pemilihan->id }}" name="id_pemilihan" hidden>
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Tidak</button>
                                                 <button type="submit" class="btn btn-warning">Pilih</button>
                                             </div>

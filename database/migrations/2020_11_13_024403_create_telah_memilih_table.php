@@ -15,7 +15,7 @@ class CreateTelahMemilihTable extends Migration
     {
         Schema::create('telah_memilih', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_siswa');
+            $table->integer('id_pemilih');
             $table->integer('id_pemilihan');
             $table->timestamps();
         });
