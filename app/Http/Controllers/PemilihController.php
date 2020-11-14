@@ -17,7 +17,12 @@ class PemilihController extends Controller
         $pemilihan = Pemilihan::all();
 
         foreach($pemilihan as $p){
-            
+            $telah_memilih = TelahMemilih::whereIn('id_pemilih', [Auth::id()])->whereIn('id_pemilihan', [$p->id])->first();
+            if(!empty($telah_memilih)){
+                $p->telah_memilih = true;
+            }else{
+                $p->telah_memilih = false;
+            }
             $p->pemilihan_dimulai_carbon = \Carbon\Carbon::parse($p->pemilihan_dimulai)->format('d, M Y H:i');
             $p->pemilihan_berakhir_carbon = \Carbon\Carbon::parse($p->pemilihan_berakhir)->format('d, M Y H:i');
         }
@@ -26,17 +31,20 @@ class PemilihController extends Controller
     }   
 
     public function pilih_calon($id){
-        $telah_memilih = TelahMemilih::where([
-            'id_pemilih' => Auth::id(),
-            'id_pemilihan' => $id
-        ]);
+        $telah_memilih = TelahMemilih::where('id_pemilihan', $id)->where('id_pemilih', Auth::id())->first();
 
-        if(empty($telah_memilih)){
+        $pemilihan = Pemilihan::where('id', $id)->first();
+
+        $pemilihan_dimulai = strtotime($pemilihan->pemilihan_dimulai);
+        $pemilihan_berakhir = strtotime($pemilihan->pemilihan_berakhir);
+        $sekarang = time();
+
+        if(!empty($telah_memilih) || $pemilihan_dimulai > $sekarang || $pemilihan_berakhir < $sekarang){
+            return redirect()->back();
+        }else{
             $pemilihan = Pemilihan::where('id', $id)->first();
             $calon = Calon::where('id_pemilihan', $id)->get();
             return view('pemilih/pilih_calon', compact(['pemilihan', 'calon']));
-        }else{
-            return redirect()->back();
         }
     }
 

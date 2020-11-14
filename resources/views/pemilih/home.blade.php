@@ -14,7 +14,6 @@
                                 <center>
                                     <h3>{{ $p->nama_pemilihan }}</h3>
                                     <p style="font-size: 11pt">{{ $p->deskripsi }}</p>
-                                   
                                     <p style="font-size: 10pt">
                                         @php
                                             $pemilihan_dimulai = strtotime($p->pemilihan_dimulai);
@@ -26,19 +25,35 @@
                                         @endphp
 
                                         @if ($pemilihan_dimulai < $sekarang && $pemilihan_berakhir > $sekarang)
-                                            <strong>Sudah Dimulai</strong> <br/>
                                             Berakhir : <strong><span data-countdown="{{ $p->pemilihan_berakhir }}"></span></strong>
                                             <br/>
 
+                                            @if (!$p->telah_memilih)
+                                                <a href="{{ url('pilih_calon/' . $p->id) }}" class="btn btn-warning mt-1 p-2">
+                                                    Pilih Calon!
+                                                </a>
+                                            @else
+                                            <div class="alert alert-success alert-block">
+                                                <strong><h2>Anda Sudah Memilih</h2></strong>
+                                            </div>
+                                            @endif
                                             
-                                            <a href="{{ url('pilih_calon/' . $p->id) }}" class="btn btn-warning mt-1 p-2">
-                                                Pilih Calon!
-                                            </a>
                                         @elseif ($pemilihan_dimulai > $sekarang && $pemilihan_berakhir > $sekarang)
                                             Dimulai : <strong><span data-countdown="{{ $p->pemilihan_dimulai }}"></span></strong> <br/>
                                             Berakhir : <strong><span>{{ $p->pemilihan_berakhir_carbon }}</span></strong>
-                                        @else
-                                            <strong><h2 class="text-danger">Pemilihan Sudah Berakhir</h2></strong>
+
+                                        @elseif(!$p->telah_memilih && $pemilihan_berakhir < $sekarang)
+                                        <div class="alert alert-danger alert-block">
+                                            <strong><h2>Anda Belum Memilih Namun Pemilihan Sudah Berakhir</h2></strong>
+                                        </div>
+
+                                        @elseif($p->telah_memilih && $pemilihan_berakhir < $sekarang)
+                                        <div class="alert alert-success alert-block">
+                                            <strong><h2>Anda Sudah Memilih dan Pemilihan Telah Berakhir</h2></strong>
+                                        </div>
+                                        <a href="{{ url('pilih_calon/' . $p->id) }}" class="btn btn-primary mt-1 p-2">
+                                            Lihat Pemenang!
+                                        </a>
                                         @endif
                                     </p>
                                 </center>
@@ -55,10 +70,11 @@
 @push('js')
     <script src="{{ URL::to('/') }}/js/jquery.countdown.js"></script>
     <script>
+
        $('[data-countdown]').each(function() {
-            var $this = $(this), finalDate = $(this).data('countdown');
+            let $this = $(this), finalDate = $(this).data('countdown');
             $this.countdown(finalDate, function(event) {
-                $this.html(event.strftime('%D Hari %H:%M:%S'));
+                $this.html(event.strftime('%D Hari %H Jam : %M Menit : %S Detik'));
             });
         });
         
