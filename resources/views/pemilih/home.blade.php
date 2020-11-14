@@ -46,13 +46,15 @@
                                         <div class="alert alert-danger alert-block">
                                             <strong><h2>Anda Belum Memilih Namun Pemilihan Sudah Berakhir</h2></strong>
                                         </div>
-
+                                        <a href="{{ url('hasil_pemilihan/' . $p->id) }}" class="btn btn-primary mt-1 p-2">
+                                            Lihat Hasil!
+                                        </a>
                                         @elseif($p->telah_memilih && $pemilihan_berakhir < $sekarang)
                                         <div class="alert alert-success alert-block">
                                             <strong><h2>Anda Sudah Memilih dan Pemilihan Telah Berakhir</h2></strong>
                                         </div>
-                                        <a href="{{ url('pilih_calon/' . $p->id) }}" class="btn btn-primary mt-1 p-2">
-                                            Lihat Pemenang!
+                                        <a href="{{ url('hasil_pemilihan/' . $p->id) }}" class="btn btn-primary mt-1 p-2">
+                                            Lihat Hasil!
                                         </a>
                                         @endif
                                     </p>

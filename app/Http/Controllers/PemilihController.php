@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pemilihan;
 use App\Models\Calon;
+use App\Models\User;
 use App\Models\TelahMemilih;
 use Carbon\Carbon;
 use Session;
@@ -65,5 +66,25 @@ class PemilihController extends Controller
         Session::flash('sukses_pilih_calon', 'Anda Telah Memilih ' . $calon->nama_calon);
 
         return redirect('/home');
+    }
+
+    public function hasil_pemilihan($id_pemilihan){
+        $pemilihan = Pemilihan::where('id', $id_pemilihan)->first();
+        $calon = Calon::where('id_pemilihan', $id_pemilihan)->get();
+        $pemilih = User::all();
+        $jumlah_pemilih = $pemilih->count();
+        $telah_memilih = TelahMemilih::where('id_pemilihan', $id_pemilihan)->get();
+        $jumlah_telah_memilih = $telah_memilih->count();
+
+        $pemilihan_dimulai = strtotime($pemilihan->pemilihan_dimulai);
+        $pemilihan_berakhir = strtotime($pemilihan->pemilihan_berakhir);
+        $sekarang = time();
+        
+        if($pemilihan_berakhir < $sekarang){
+            return view('pemilih/hasil_pemilihan', compact(['pemilihan', 'calon', 'jumlah_pemilih', 'jumlah_telah_memilih']));
+        }else{
+            return redirect()->back();
+        }
+        
     }
 }
