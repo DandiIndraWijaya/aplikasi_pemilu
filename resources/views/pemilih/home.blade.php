@@ -28,11 +28,15 @@
                                         @if ($pemilihan_dimulai < $sekarang && $pemilihan_berakhir > $sekarang)
                                             <strong>Sudah Dimulai</strong> <br/>
                                             Berakhir : <strong><span data-countdown="{{ $p->pemilihan_berakhir }}"></span></strong>
+                                            <br/>
+                                            <a href="{{ url('pilih_calon/' . $p->id) }}" class="btn btn-warning mt-1 p-2">
+                                                Pilih Calon!
+                                            </a>
                                         @elseif ($pemilihan_dimulai > $sekarang && $pemilihan_berakhir > $sekarang)
                                             Dimulai : <strong><span data-countdown="{{ $p->pemilihan_dimulai }}"></span></strong> <br/>
                                             Berakhir : <strong><span>{{ $p->pemilihan_berakhir_carbon }}</span></strong>
                                         @else
-                                            <strong><h2>Pemilihan Sudah Berakhir</h2></strong>
+                                            <strong><h2 class="text-danger">Pemilihan Sudah Berakhir</h2></strong>
                                         @endif
                                     </p>
                                 </center>

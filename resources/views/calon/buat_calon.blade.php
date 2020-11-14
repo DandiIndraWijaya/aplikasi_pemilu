@@ -81,19 +81,19 @@
 						@foreach ($calon as $c)
 						<div class="col-12 col-sm-12 mb-3 col-md-12 col-lg-3 col-xl-3">
 							<div class="card" >
-							<img class="card-img-top" src="{{ url('/foto_calon/'.$c->foto) }}" height="250" alt="Card image cap">
-								<div class="card-body">
-								<h5 class="card-title">{{ $c->nama_pemilihan }}</h5>
-								<p class="card-text">Nomor Calon: {{ $c->nomor_calon }}</p>
-								<p class="card-text">Nama Calon: {{ $c->nama_calon }}</p>
-								<form action="/admin/hapus_calon" method="post">
-									{{ csrf_field() }}
-									<input type="text" name="id_calon" value="{{ $c->id }}" hidden>
-									<input type="text" name="foto_calon" value="{{ $c->foto }}" hidden>
-									<input type="text" name="nama_calon" value="{{ $c->nama_calon }}" hidden>
-									<input type="submit" class="btn btn-danger btn-sm" value="Hapus">
-								</form>
-								</div>
+								<img class="card-img-top" src="{{ url('/foto_calon/'.$c->foto) }}" height="250" alt="Card image cap">
+									<div class="card-body">
+									<h5 class="card-title">{{ $c->nama_pemilihan }}</h5>
+									<p class="card-text">Nomor Calon: {{ $c->nomor_calon }}</p>
+									<p class="card-text">Nama Calon: {{ $c->nama_calon }}</p>
+									<form action="/admin/hapus_calon" method="post">
+										{{ csrf_field() }}
+										<input type="text" name="id_calon" value="{{ $c->id }}" hidden>
+										<input type="text" name="foto_calon" value="{{ $c->foto }}" hidden>
+										<input type="text" name="nama_calon" value="{{ $c->nama_calon }}" hidden>
+										<input type="submit" class="btn btn-danger btn-sm" value="Hapus">
+									</form>
+									</div>
 							  </div>
 						</div>
 						@endforeach
