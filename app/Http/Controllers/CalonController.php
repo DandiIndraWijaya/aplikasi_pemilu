@@ -42,6 +42,7 @@ class CalonController extends Controller
             'nomor_calon' => $nomor_calon,
             'nama_calon' => $nama_calon,
             'id_pemilihan' => $id_pemilihan,
+            'jumlah_suara' => 0,
             'foto' => $foto_calon_uploaded
         ]);
         

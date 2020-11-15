@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNisToUsersTable extends Migration
+class AddAlamatToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class AddNisToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('id_pemilih')->after('name');
-            $table->string('role')->after('email');
+            $table->string('alamat')->after('email');
         });
     }
 
@@ -27,8 +26,7 @@ class AddNisToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('id_pemilih');
-            $table->dropColumn('role');
+            $table->dropColumn('alamat');
         });
     }
 }

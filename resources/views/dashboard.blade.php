@@ -22,7 +22,7 @@
         <!-- Import Excel -->
 		<div class="modal fade" id="importExcel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
-				<form method="post" action="/import_siswa" enctype="multipart/form-data">
+				<form method="post" action="/import_pemilih" enctype="multipart/form-data">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel">Import Excel</h5>
@@ -54,9 +54,21 @@
             <div class="col-xl-12 mb-5 mb-xl-0">
                 <div class="card shadow">
                     <div class="card-header border-0">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h3 class="mb-0">Siswa</h3>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-lg-4 col-xl-4">
+                                <h3 class="m-2">Pemilih</h3>
+                                <form >
+                                    <div class="form-group mb-0">
+                                        <div class="input-group input-group-alternative">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                            </div>
+                                            <input class="form-control" style="color: gray" placeholder="Cari Pemilih" type="text">
+                                            
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-sm m-1" value="Cari">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -65,27 +77,30 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">NIS</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">Password</th>
+                                    <th scope="col">Alamat</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($siswa as $s)
+                                @foreach ($pemilih as $p)
                                 <tr>
                                     <td>
-                                        {{ $s->nis }}
+                                        {{ $p->id_pemilih }}
                                     </td>
                                     <td>
-                                        {{ $s->nama }}
+                                        {{ $p->nama }}
                                     </td>
                                     <td>
-                                        {{ $s->password }}
+                                        {{ $p->alamat }}
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="m-2">
+                        {{ $pemilih->links() }}
                     </div>
                 </div>
             </div>

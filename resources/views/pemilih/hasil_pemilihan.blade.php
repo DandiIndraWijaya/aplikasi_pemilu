@@ -25,11 +25,11 @@
                         </div>
                         @endforeach
                     </div>
-                    <div class="card mt-2 p-1">
+                    <div class="card mt-2 p-1" >
                         <center>
-                        <h1>Jumlah Pemilih : <strong>{{ $jumlah_pemilih }}</strong></h1>
-                        <h1>Telah Memilih : <strong>{{ $jumlah_telah_memilih }}</strong></h1>
-                        <h1>Golongan Putih : <strong>{{ $jumlah_pemilih - $jumlah_telah_memilih }}</strong></h1>
+                        <h1 style="color: grey">Jumlah Pemilih : <strong>{{ $jumlah_pemilih }}</strong></h1>
+                        <h1 style="color: grey">Telah Memilih : <strong>{{ $jumlah_telah_memilih }}</strong></h1>
+                        <h1 style="color: grey">Golongan Putih : <strong>{{ $jumlah_pemilih - $jumlah_telah_memilih }}</strong></h1>
                         </center>
                     </div>
                 </div>

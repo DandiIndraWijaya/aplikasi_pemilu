@@ -116,7 +116,7 @@
                             
                                                         <label>Deskripsi</label>
                                                         <div class="form-group">
-                                                        <textarea style="color: gray;" class="form-control" name="deskripsi" placeholder="Deskripsikan Pemilihan" rows="2" required="required">{{ $p->deskripsi }}</textarea>
+                                                        <textarea maxlength="254" style="color: gray;" class="form-control" name="deskripsi" placeholder="Deskripsikan Pemilihan" rows="2" required="required">{{ $p->deskripsi }}</textarea>
                                                         </div>
                                                         
                                                         <label>Pemilihan Dimulai</label>
@@ -140,6 +140,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
+                                                        <p>Mengupdate pemilihan berarti memulai pemilihan dari awal. Jika Sebelumnya Pemilihan sudah dimulai dan sudah ada yang memilih maka akan dihapus</p>
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                                         <button type="submit" class="btn btn-warning">Simpan</button>
                                                     </div>
@@ -155,10 +156,10 @@
                                         {{ $p->deskripsi }}
                                     </td>
                                     <td>
-                                        {{ $p->pemilihan_dimulai }}
+                                        {{ $p->pemilihan_dimulai_carbon }}
                                     </td>
                                     <td>
-                                        {{ $p->pemilihan_berakhir }}
+                                        {{ $p->pemilihan_berakhir_carbon }}
                                     </td>
                                     <td>
                                         

@@ -4,6 +4,7 @@
 /public/storage
 /public/foto_calon
 /public/file_siswa
+/public/file_pemilih
 /presets
 /storage/*.key
 /vendor

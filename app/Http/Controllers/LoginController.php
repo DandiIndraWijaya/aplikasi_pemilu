@@ -17,7 +17,7 @@ class LoginController extends Controller
         ]);
 
         //LAKUKAN PENGECEKAN, JIKA INPUTAN DARI USERNAME FORMATNYA ADALAH EMAIL, MAKA KITA AKAN MELAKUKAN PROSES AUTHENTICATION MENGGUNAKAN EMAIL, SELAIN ITU, AKAN MENGGUNAKAN USERNAME
-        $loginType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'nis';
+        $loginType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'id_pemilih';
     
         //TAMPUNG INFORMASI LOGINNYA, DIMANA KOLOM TYPE PERTAMA BERSIFAT DINAMIS BERDASARKAN VALUE DARI PENGECEKAN DIATAS
         $login = [

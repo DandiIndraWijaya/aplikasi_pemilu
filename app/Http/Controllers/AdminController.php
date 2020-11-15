@@ -9,19 +9,19 @@ use App\Models\Siswa;
  
 use Session;
  
-use App\Exports\SiswaExport;
-use App\Imports\SiswaImport;
+use App\Exports\UsersExport;
+use App\Imports\UsersImport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
     public function index(){
-        $siswa = Siswa::all();
-        return view('dashboard', ['siswa' => $siswa]);
+        $pemilih = User::where('role', 1)->paginate(6);
+        return view('dashboard', ['pemilih' => $pemilih]);
     }
 
-    public function import_siswa(Request $request){
+    public function import_pemilih(Request $request){
         // validasi
 		$this->validate($request, [
 			'file' => 'required|mimes:csv,xls,xlsx'
@@ -36,13 +36,13 @@ class AdminController extends Controller
         User::where('role', 1)->delete();
 
 		// upload ke folder file_siswa di dalam folder public
-		$file->move('file_siswa',$nama_file);
+		$file->move('file_pemilih',$nama_file);
  
 		// import data
-		Excel::import(new SiswaImport, public_path('/file_siswa/'.$nama_file));
+		Excel::import(new UsersImport, public_path('/file_pemilih/'.$nama_file));
  
 		// notifikasi dengan session
-		Session::flash('sukses','Data Siswa Berhasil Diimport!');
+		Session::flash('sukses','Data Pemilih Berhasil Diimport!');
  
 		// alihkan halaman kembali
 		return redirect('/dashboard');

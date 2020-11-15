@@ -23,17 +23,17 @@ Route::group(['middleware' => 'guest'], function () {
 	Route::get('/login');
 });
 
-Route::group(['middleware' => 'pemilih'], function () {
+Route::group(['middleware' => ['pemilih', 'auth']], function () {
 	Route::get('/home', 'App\Http\Controllers\PemilihController@index')->name('home');
 	Route::get('/pilih_calon/{id}', 'App\Http\Controllers\PemilihController@pilih_calon')->name('pilih_calon');
 	Route::post('/proses/pilih_calon', 'App\Http\Controllers\PemilihController@proses_pilih_calon')->name('proses_pilih_calon');
 	Route::get('/hasil_pemilihan/{id_pemilihan}', 'App\Http\Controllers\PemilihController@hasil_pemilihan')->name('hasil_pemilihan');
 });
 
-Route::group(['middleware' => 'admin'], function (){
+Route::group(['middleware' => ['admin', 'auth']], function (){
 	
 	Route::get('/dashboard', 'App\Http\Controllers\AdminController@index')->name('dashboard');
-	Route::post('/import_siswa', 'App\Http\Controllers\AdminController@import_siswa')->name('import_siswa');
+	Route::post('/import_pemilih', 'App\Http\Controllers\AdminController@import_pemilih')->name('import_pemilih');
 
 	Route::group(['prefix' => 'admin'], function () {
 		// Buat Pemilihan

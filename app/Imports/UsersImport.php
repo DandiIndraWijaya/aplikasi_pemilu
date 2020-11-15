@@ -6,7 +6,7 @@ use App\Models\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Support\Facades\Hash;
 
-class SiswaImport implements ToModel
+class UsersImport implements ToModel
 {
     /**
     * @param array $row
