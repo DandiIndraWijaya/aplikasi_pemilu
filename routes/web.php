@@ -34,6 +34,7 @@ Route::group(['middleware' => ['admin', 'auth']], function (){
 	
 	Route::get('/dashboard', 'App\Http\Controllers\AdminController@index')->name('dashboard');
 	Route::post('/import_pemilih', 'App\Http\Controllers\AdminController@import_pemilih')->name('import_pemilih');
+	Route::get('/dashboard/cari_pemilih', 'App\Http\Controllers\AdminController@cari_pemilih')->name('cari_pemilih');
 
 	Route::group(['prefix' => 'admin'], function () {
 		// Buat Pemilihan

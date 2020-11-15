@@ -57,13 +57,20 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-lg-4 col-xl-4">
                                 <h3 class="m-2">Pemilih</h3>
-                                <form >
+                                <form action="/dashboard/cari_pemilih" method="GET">
                                     <div class="form-group mb-0">
                                         <div class="input-group input-group-alternative">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                                             </div>
-                                            <input class="form-control" style="color: gray" placeholder="Cari Pemilih" type="text">
+                                            @php
+                                                if(isset($nama)){
+                                                    $nama_value = $nama;
+                                                }else{
+                                                    $nama_value = '';
+                                                }
+                                            @endphp
+                                            <input class="form-control" style="color: gray" placeholder="Cari Pemilih" name="nama" value="{{ $nama_value }}" type="text">
                                             
                                         </div>
                                     </div>
@@ -89,7 +96,7 @@
                                         {{ $p->id_pemilih }}
                                     </td>
                                     <td>
-                                        {{ $p->nama }}
+                                        {{ $p->name }}
                                     </td>
                                     <td>
                                         {{ $p->alamat }}

@@ -19,7 +19,14 @@ class AdminController extends Controller
     public function index(){
         $pemilih = User::where('role', 1)->paginate(6);
         return view('dashboard', ['pemilih' => $pemilih]);
-    }
+	}
+	
+	public function cari_pemilih(Request $request){
+		$nama = $request->nama;
+		$pemilih = User::where('name', 'like', '%' . $request->nama . '%')->paginate(6);
+		
+		return view('dashboard', compact(['pemilih', 'nama']));
+	}
 
     public function import_pemilih(Request $request){
         // validasi
