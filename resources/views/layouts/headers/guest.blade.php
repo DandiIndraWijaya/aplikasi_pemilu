@@ -3,7 +3,7 @@
         <div class="header-body text-center mb-4">
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-6">
-                    <h1 class="text-white">{{ __('Pemilu SMP N X') }}</h1>
+                    <h1 class="text-white">{{ __('Pemilu Desa SukaMundur') }}</h1>
                     {{-- notifikasi sukses --}}
                     @if ($sukses = Session::get('sukses_pilih_calon'))
                     <div class="alert alert-success alert-block">
