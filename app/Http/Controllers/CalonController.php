@@ -59,14 +59,13 @@ class CalonController extends Controller
         $file_path = 'foto_calon/'.$foto_calon;
         if(File::exists($file_path)){
             File::delete($file_path);
-            Calon::where('id', $id_calon)->delete();
+        }
+        
+        Calon::where('id', $id_calon)->delete();
 
             Session::flash('sukses', 'Calon dengan nama ' . $nama_calon . ' berhasil dihapus!');
 
             return redirect('/admin/calon');
-        }else{
-            echo $file_path;
-        }
     }
     
 }
