@@ -32,13 +32,12 @@ class PemilihController extends Controller
     }   
 
     public function pilih_calon($id){
-        $telah_memilih = TelahMemilih::where('id_pemilihan', $id)->where('id_pemilih', Auth::id())->first();
+        $pemilihan = Pemilihan::where('id', $id)->first();
 
-        if(empty($telah_memilih)){
+        if(empty($pemilihan)){
             return redirect()->back();
         }else{
-            $pemilihan = Pemilihan::where('id', $id)->first();
-
+            $telah_memilih = TelahMemilih::where('id_pemilihan', $id)->where('id_pemilih', Auth::id())->first();
             $pemilihan_dimulai = strtotime($pemilihan->pemilihan_dimulai);
             $pemilihan_berakhir = strtotime($pemilihan->pemilihan_berakhir);
             $sekarang = time();
@@ -74,7 +73,6 @@ class PemilihController extends Controller
 
     public function hasil_pemilihan($id_pemilihan){
         $pemilihan = Pemilihan::where('id', $id_pemilihan)->first();
-        
         $calon = Calon::where('id_pemilihan', $id_pemilihan)->get();
         $pemilih = User::all();
         $jumlah_pemilih = $pemilih->count();
